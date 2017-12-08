@@ -4,8 +4,12 @@ from django.forms import ModelForm
 
 
 class CategoriaForm(ModelForm):
-    model = Categoria
+    class Meta:
+        model = Categoria
+        exclude = ['']
 
 
 class ContaForm(ModelForm):
-    model = Conta
+    class Meta:
+        model = Conta
+        exclude = ['']
