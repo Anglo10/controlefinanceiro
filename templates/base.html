@@ -23,29 +23,29 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="base.html">Financeiro</a>
+    <a class="navbar-brand" href="{% url 'inicio' %}">Financeiro</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="base.html">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Dashboard</span>
+          <a class="nav-link" href="{% url 'inicio' %}">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+            <span class="nav-link-text">Lista de Contas</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Components</span>
+            <span class="nav-link-text">Configurações</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="navbar.html">Navbar</a>
+              <a href=" {% url 'nova_categoria' %}">Nova Categoria</a>
             </li>
             <li>
-              <a href="cards.html">Cards</a>
+              <a href="{% url 'lista_categoria' %}">Categorias Existentes</a>
             </li>
           </ul>
         </li>
@@ -69,7 +69,7 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © Your Website 2017</small>
+            <small>Feito por Anglomar Barros(Staff) <a href="https://www.facebook.com/anglomar.barros">Facebook </a>  </small></small>
         </div>
       </div>
     </footer>
