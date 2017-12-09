@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block titulo %}
+    Atualizar Dados
+{% endblock %}
+
+{% block conteudo %}
+    <h1> Atualizar Dados</h1>
+        <form method="POST" action="{% url 'editar' pk %}">
+            {% csrf_token %}
+
+            {{ form }}
+
+        <input type="hidden" name="c.id" value="{{ pk }}">
+        <a href="{% url 'deletar' pk %}" class="btn btn-danger" id="toggleNavColor">Deletar</a>
+        <input type="submit" value="Atualizar">
+        </form>
+
+{% endblock %}
