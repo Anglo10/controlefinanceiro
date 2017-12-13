@@ -19,7 +19,7 @@
         {% for c in lista_categoria %}
             <tr>
                 <td>{{ c.nome }}</td>
-                <td>{{ c.ativa }}</td>
+                <td>{% if c.ativa %}sim{% else %}não{% endif %}</td>
                 <td><a class="btn btn-primary" href="{% url 'editar_categoria' c.id %}" id="toggleNavColor">Editar</a></td>
             </tr>
         {% endfor %}

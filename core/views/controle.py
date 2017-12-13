@@ -19,16 +19,9 @@ def novaConta(request):
     conta = ContaForm(request.POST)
     if conta.is_valid():
         conta.save()
+        return redirect('inicio')
     return render(request, 'core/nova_conta.html',dados)
 
-#atualiza
-def contaCriada(request, pk):
-    conta = Conta.objects.get(pk=pk)
-    conta = ContaForm(request.POST or None, instance=conta)
-    if conta.is_valid():
-        conta.save()
-    return redirect('inicio')
-    
 #recupera os dados
 def atualizarConta(request,pk):
     dados = {}
@@ -46,8 +39,9 @@ def editarConta(request, pk):
     return redirect('inicio')
 
 
-def deletarConta(request, pk):
-    conta = Conta.objects.get(id=pk)
+def deletarConta(request):
+    id = request.POST['botaoModal']
+    conta = Conta.objects.get(id=id)
     conta.delete()
     return redirect('inicio')
 
@@ -57,14 +51,9 @@ def novaCategoria(request):
     categoria = CategoriaForm(request.POST)
     if categoria.is_valid():
         categoria.save()
+        return redirect('lista_categoria')
     return render(request, 'core/nova_categoria.html', dados)
 
-def categoriaCriada(request, pk):
-    categoria = Categoria.objects.get(pk=pk)
-    categoria = CategoriaForm(request.POST or None, instance=categoria)
-    if categoria.is_valid():
-        categoria.save()
-    return redirect('lista_categoria')
 
 def editarCategoria(request, pk):
     dados = {}
@@ -82,7 +71,8 @@ def categoriaEditada(request,pk):
         form.save()
     return redirect('lista_categoria')
 
-def deletarCategoria(request,pk):
-    categoria = Categoria.objects.get(id=pk)
+def deletarCategoria(request):
+    id = request.POST['botaoModal']
+    categoria = Categoria.objects.get(id=id)
     categoria.delete()
     return redirect('lista_categoria')

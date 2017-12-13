@@ -4,15 +4,41 @@
 {% endblock %}
 
 {% block conteudo %}
-    <h1> Editar Categoria</h1>
+    <h1 xmlns="http://www.w3.org/1999/html"> Editar Categoria</h1>
         <form method="POST" action="{% url 'categoria_editada' pk %}">
             {% csrf_token %}
 
-            {{ form }}
+            {{ form }}<br>
 
         <input type="hidden" name="c.id" value="{{ pk }}">
-        <a href="{% url 'deletar_categoria' pk %}" class="btn btn-danger" id="toggleNavColor">Deletar</a>
-        <input type="submit" value="Atualizar">
+        <button type="button" class="btn btn-danger" id="botao" data-toggle="modal" data-target="#myModal" data-id={{ pk }} >Deletar</button>
+        <input type="submit" value="Atualizar" class="btn btn-primary">
         </form>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Deletar</h4>
+        </div>
+        <div class="modal-body">
+          <p>Tem Certeza que deseja deletar.</p>
+            <form method="POST" action="{% url 'deletar_categoria' %}">
+                {% csrf_token %}
+                <input type="hidden" id="modal" name="botaoModal">
+                <input type="submit" class="btn btn-default" value="Sim">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+
+
+        </div>
+      </div>
+
+        </div>
+    </div>
 
 {% endblock %}

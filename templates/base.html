@@ -109,6 +109,12 @@
     <!-- Custom scripts for this page-->
     <script src="{% static 'js/sb-admin-datatables.min.js' %}"></script>
     <script src="{% static 'js/sb-admin-charts.min.js' %}"></script>
+      <script>
+            $('#botao').click(function(){
+                meuBotao = $(this).attr('data-id');
+                document.getElementById("modal").value=meuBotao;
+            });
+        </script>
   </div>
 </body>
 
