@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block conteudo %}
-
+    <input type="text" id="buscaCategoria" onkeyup="buscaCategoria()" placeholder="Busca por Categorias" title="buscaCategoria">
     <div class="table-responsive">
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover" id="Categorias">
         <thead>
         <tr>
                 <th><a class="btn btn-primary" href="{% url 'nova_categoria' %}" id="toggleNavColor">Nova Categoria</a></th>
@@ -26,4 +26,23 @@
         </tbody>
     </table>
     </div>
+    <script>
+        function buscaCategoria() {
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("buscaCategoria");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("Categorias");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+            tr[i].style.display = "none";
+      }
+    }
+  }
+}
+    </script>
 {% endblock %}

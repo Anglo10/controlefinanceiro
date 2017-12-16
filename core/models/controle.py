@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import PermissionsMixin
 
 class Categoria(models.Model):
     nome = models.CharField("Nome", max_length=100, blank=False)

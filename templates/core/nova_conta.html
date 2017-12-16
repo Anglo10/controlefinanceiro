@@ -11,4 +11,36 @@
         {{ form }}<br>
         <input type="submit" value="Salvar" class="btn btn-primary">
          </form>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    var iconCarregando = $('<span class="destaque">Carregando. Por favor aguarde...</span>');
+    $('#').submit(function(e) {
+        e.preventDefault();
+        var serializeDados = $('#').serialize();
+
+        $.ajax({
+            url: 'exemplo-serialize.php',
+            dataType: 'html',
+            type: 'POST',
+            data: serializeDados,
+            beforeSend: function() {
+                $('#ContaForm').html(iconCarregando);
+            },
+            complete: function() {
+                $(iconCarregando).remove();
+            },
+            success: function(data, textStatus) {
+                $('#insere_aqui').html('<p>' + data + '</p>');
+            },
+            error: function(xhr,er) {
+                $('#mensagem_erro').html('<p class="destaque">Error ' + xhr.status + ' - ' + xhr.statusText + '<br />Tipo de erro: ' + er + '</p>')
+            }
+        });
+
+    });
+})
+
+</script>
 {% endblock %}
+

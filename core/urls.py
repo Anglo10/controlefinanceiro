@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^categoria_editada/(?P<pk>\d+)$', controle.categoriaEditada, name="categoria_editada"),
     url(r'^dado_editado/(?P<pk>\d+)$', controle.atualizarConta, name="dado_editado"),
     url(r'^deletar/$', controle.deletarConta, name="deletar"),
-    url(r'^deletar_categoria/$', controle.deletarCategoria, name="deletar_categoria")
+    url(r'^deletar_categoria/$', controle.deletarCategoria, name="deletar_categoria"),
+
 ]

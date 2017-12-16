@@ -1,6 +1,10 @@
 from core.forms.controle import CategoriaForm, ContaForm
 from django.shortcuts import render, redirect
 from core.models.controle import Conta,Categoria
+from django.shortcuts import HttpResponse
+from django.core import serializers
+
+
 
 def inicio(request):
     dados = {}
@@ -76,3 +80,5 @@ def deletarCategoria(request):
     categoria = Categoria.objects.get(id=id)
     categoria.delete()
     return redirect('lista_categoria')
+
+
