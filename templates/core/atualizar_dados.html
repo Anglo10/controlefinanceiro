@@ -4,14 +4,14 @@
 {% endblock %}
 
 {% block conteudo %}
-    <h1> Atualizar Dados</h1>
+    <h1>Atualizar Dados</h1>
         <form method="POST" action="{% url 'editar' pk %}">
             {% csrf_token %}
 
-            {{ form }}
+            {{ form }}<br>
 
         <input type="hidden" name="c.id" value="{{ pk }}">
-        <button type="button" class="btn btn-danger" id="botao" data-toggle="modal" data-target="#myModal" data-id={{ pk }}>Deletar</button>
+        <button type="button" class="btn btn-danger" id="botao" data-toggle="modal" data-target="#myModal" onclick="botaoDelete({{ pk }})">Deletar</button>
         <input type="submit" value="Atualizar" class="btn btn-primary">
         </form>
 
@@ -20,11 +20,11 @@
 
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Deletar</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <p>Tem Certeza que deseja deletar.</p>
+          <p>Tem Certeza que deseja deletar</p>
             <form method="POST" action="{% url 'deletar' %}">
                 {% csrf_token %}
                 <input type="hidden" id="modal" name="botaoModal">

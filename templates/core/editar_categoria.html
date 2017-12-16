@@ -11,7 +11,7 @@
             {{ form }}<br>
 
         <input type="hidden" name="c.id" value="{{ pk }}">
-        <button type="button" class="btn btn-danger" id="botao" data-toggle="modal" data-target="#myModal" data-id={{ pk }} >Deletar</button>
+        <button type="button" class="btn btn-danger" id="botao" data-toggle="modal" data-target="#myModal" onclick="botaoDelete({{ pk }})"  >Deletar</button>
         <input type="submit" value="Atualizar" class="btn btn-primary">
         </form>
 

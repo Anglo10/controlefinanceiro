@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from core.models.controle import Conta,Categoria
 from django.shortcuts import HttpResponse
 from django.core import serializers
+from django.http import JsonResponse
 
 
 
@@ -23,8 +24,23 @@ def novaConta(request):
     conta = ContaForm(request.POST)
     if conta.is_valid():
         conta.save()
-        return redirect('inicio')
-    return render(request, 'core/nova_conta.html',dados)
+        listaConta= {}
+        conta_faturamento = []
+        contas = Conta.objects.all().order_by("descricao")
+        for c in contas:
+            if c.vencimento == "" or c.vencimento == None:
+                c.vencimento= ""
+            else:
+                descricao = c.descricao
+                valor = c.valor
+                vencimento = c.vencimento
+                categoria = c.categoria.nome
+                id = c.id
+                registro_conta = {'descricao': descricao, 'valor': valor, 'vencimento': vencimento,'categoria': categoria, 'id': id}
+                conta_faturamento.append(registro_conta)
+            listaConta['lista_conta'] = conta_faturamento
+        return JsonResponse(listaConta)
+    return render(request, 'core/nova_conta.html', dados)
 
 #recupera os dados
 def atualizarConta(request,pk):

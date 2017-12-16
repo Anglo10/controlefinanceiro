@@ -1,0 +1,28 @@
+.btn-primary{
+    background-color: gray ;
+    font-size: 20px;
+    border: gray;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.btn-danger{
+    font-size: 20px;
+    border: white;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.btn-primary:hover{
+    background-color: blue;
+    color: white;
+}
+
+.btn-danger:hover{
+    background-color: darkred;
+    color: white;
+}
+
+h1{
+    font-family: "Times New Roman", Times,Serif;
+}
