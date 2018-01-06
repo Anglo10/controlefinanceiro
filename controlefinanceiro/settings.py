@@ -52,6 +52,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'controlefinanceiro.urls'
 
+TEMPLATES_CONTEXT_PROCESSORS = (
+    'django.core.context_processores.request',
+    'django.core.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+
+)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -80,6 +88,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+AUTH_PROFILE_MODULE = 'core.core'
 
 
 # Password validation
@@ -123,4 +133,4 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 # login ainda vamos ver
 LOGIN_REDIRECT = "../home"
-LOGIN_URL = 'login'
+LOGIN_URL = '/login'
